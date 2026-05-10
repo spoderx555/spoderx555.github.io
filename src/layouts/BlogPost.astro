@@ -1,0 +1,129 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import TableOfContent from '../components/TableOfContent.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, tableOfContent, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={heroImage} type="article" datePublished={pubDate.toISOString().split("T")[0]} />
+		<!-- Structured Data -->
+	</head>
+	<body>
+		<Header />
+			<main>
+				<article>
+				<div>
+					<div>
+						<p class="text-muted">/ <a class="hover:underline hover:text-white transition" href="/blog">blog</a> /</p>
+						<h1 class="text-4xl font-bold mb-4">{title}</h1>
+						<FormattedDate date={pubDate} />
+					</div>
+					<hr class="my-6" />
+					<div class="hero-image mb-8">
+						{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					</div>
+				</div>
+				<div class="flex max-w-fit gap-2">
+					<div class="prose main">
+						<slot />
+					</div>
+					<TableOfContent content={tableOfContent} /></div>
+				</div>
+			</article>
+		</main>
+		<Footer />
+		<script>
+			const tocLinks = document.querySelectorAll<HTMLAnchorElement>('aside li a')
+  			const headings = document.querySelectorAll<HTMLHeadingElement>('article h1, article h2, article h3, article h4, article h5, article h6')
+
+			const OFFSET = 70;
+
+			function clearActive(): void {
+				tocLinks.forEach(a => a.parentElement?.classList.remove('active'))
+			}
+
+			function getCurrentHeading(): HTMLHeadingElement | undefined {
+				const scrollY = window.scrollY + OFFSET
+				const passed = [...headings].filter(h => {
+				const top = h.getBoundingClientRect().top + window.scrollY
+				return scrollY >= top
+				})
+				return passed.at(-1)
+			}
+
+			function syncActive(): void {
+				clearActive()
+				const current = getCurrentHeading()
+				if (!current) return
+				const match = [...tocLinks].find(
+				a => a.getAttribute('href') === `#${current.id}`
+				)
+				match?.parentElement?.classList.add('active')
+			}
+
+			function setLastActive(): void {
+				clearActive()
+				const lastHeading = [...headings].at(-1)
+				if (!lastHeading) return
+				const match = [...tocLinks].find(
+				a => a.getAttribute('href') === `#${lastHeading.id}`
+				)
+				match?.parentElement?.classList.add('active')
+			}
+
+			function isAtBottom(): boolean {
+				return window.innerHeight + window.scrollY >= document.body.scrollHeight - 5
+			}
+
+			let handleScroll: () => void
+			let handleWheel: (e: WheelEvent) => void
+
+			function setup(): void {
+				requestAnimationFrame(() => {
+				if (isAtBottom()) {
+					setLastActive()
+				} else {
+					syncActive()
+				}
+				})
+
+				handleScroll = () => {
+				if (isAtBottom()) {
+					setLastActive()
+				} else {
+					syncActive()
+				}
+				}
+				window.addEventListener('scroll', handleScroll, { passive: true })
+
+				handleWheel = (e: WheelEvent) => {
+				e.preventDefault()
+				window.scrollBy({ top: e.deltaY * 0.5, behavior: 'smooth' })
+				}
+				window.addEventListener('wheel', handleWheel, { passive: false })
+			}
+
+			function teardown(): void {
+				window.removeEventListener('scroll', handleScroll)
+				window.removeEventListener('wheel', handleWheel)
+				clearActive()
+			}
+
+			setup()
+
+			document.addEventListener('astro:page-load', () => {
+				teardown()
+				setup()
+			})
+		  </script>
+	</body>
+</html>

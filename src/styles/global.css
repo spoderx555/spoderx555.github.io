@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-background-hover: #ffffff08;
+  --color-background-second: #1b1b1b;
+  --color-heading: #f5f2ec;
+  --color-text: #e8e4dc;
+  --color-muted: #83817d;
+  --color-border: #363635;
+}
+
+:root {
+  --font-heading: "Share Tech Mono", monospace;
+  --font-body: "Share Tech Mono", monospace;
+  --font-code: "Share Tech Mono", monospace;
+}
+
+pre::-webkit-scrollbar {
+  height: 12px;
+}
+
+.frame {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+*::selection {
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid var(--color-border);
+  padding: 10px 20px;
+}
+mark {
+  color: black;
+  background-color: white;
+}
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  text-align: left;
+  background-color: var(--color-background);
+  background-size: 100% 600px;
+  word-wrap: break-word;
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.content-table a:hover {
+  text-decoration: underline;
+}
+header {
+  background: rgb(10, 10, 10, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+}
+main {
+  --parent-width: 100%;
+  width: 720px;
+  max-width: calc(100% - 2em);
+  padding: 0 0.5em;
+  margin: auto;
+}
+.main {
+  max-width: 100%;
+}
+.prose a {
+  font-weight: 700;
+  text-decoration: underline;
+}
+.prose ol li {
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+.prose ul li {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  padding: 1rem 0;
+  color: var(--color-text);
+  line-height: 1.2;
+  scroll-margin-top: 60px;
+}
+code,
+pre {
+  font-family: var(--font-code);
+}
+.heading-anchor {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+li.active {
+  border-left: 1px white solid;
+  color: white;
+}
+
+.heading-anchor::after {
+  content: " #";
+  opacity: 0;
+  color: #aaa;
+  font-weight: 300;
+  font-size: 0.85em;
+  transition: opacity 0.2s ease;
+}
+
+.heading-anchor:hover::after {
+  opacity: 1;
+}
+h1 {
+  font-size: 2.441em;
+}
+h2 {
+  font-size: 1.953em;
+}
+h3 {
+  font-size: 1.563em;
+}
+h4 {
+  font-size: 1.25em;
+}
+h5 {
+  font-size: 1em;
+}
+strong,
+b {
+  font-weight: 700;
+}
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+p {
+  margin: 0.25rem 0;
+}
+input {
+  font-size: 16px;
+}
+table {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+code {
+  padding: 3px 7px;
+  background-color: var(--color-background-second);
+  border-radius: 5px;
+}
+pre {
+  padding: 1.5em;
+  border-radius: 8px;
+}
+pre > code {
+  all: unset;
+}
+blockquote {
+  border-left: 4px solid white;
+  padding: 0 0 0 20px;
+  margin: 0;
+  font-size: 1em;
+}
+hr {
+  border-color: var(--color-border);
+}
+@media (max-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+  main {
+    padding: 0.25em;
+  }
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.563em;
+  }
+  h2 {
+    font-size: 1.953em;
+  }
+  h3 {
+    font-size: 1.563em;
+  }
+  h4 {
+    font-size: 1.25em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+}

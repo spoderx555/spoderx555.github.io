@@ -1,0 +1,15 @@
+---
+const {content, nested} = Astro.props
+
+function textToId(text: string) {
+	return text.replaceAll(" ", "-").toLowerCase();
+}
+---
+
+{content.map((v: string, i: number) =>
+    Array.isArray(v) ? (
+        <Astro.self content={v} nested={nested+1} />
+    ) : (
+      <li style={`padding-left: ${(i == 0 ? Math.max(1, (nested-1)) : nested) * 16}px`} class={`hover:text-white transition py-2 border-l border-border`}><a href={`#${textToId(v)}`}>{v}</a></li>
+    )
+)}

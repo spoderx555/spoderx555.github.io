@@ -1,0 +1,36 @@
+---
+import ContentList from "./ContentList.astro"
+
+const {content} = Astro.props
+---
+
+<aside class="hidden xl:block content-table sticky top-18 left-0 ml-6 min-w-[250px] max-h-min">
+    <span class="mb-4 block">Table of Contents</span>
+    <ul class="text-xs text-muted mb-8">
+        <ContentList content={content} nested={1} />
+    </ul>
+    <hr />
+    <div class="flex flex-col items-start mt-4">
+        <button id="copy-link" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start rounded-sm mb-2">→ Copy Link</button>
+        <a href="https://x.com/spoderx555" target="_blank" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start rounded-sm">→ Twitter / X</a>
+    </div>
+    <script>
+            const btn = document.getElementById('copy-link') as HTMLButtonElement | null
+
+            if (btn) {
+                btn.addEventListener("click", () => {
+                const original = btn.textContent ?? 'Copy link'
+
+                navigator.clipboard.writeText(location.href)
+
+                btn.textContent = 'Copied!'
+                btn.disabled = true
+
+                setTimeout(() => {
+                        btn.textContent = original
+                        btn.disabled = false
+                    }, 1000)
+                });
+            }
+    </script>
+</aside>
