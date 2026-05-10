@@ -58,9 +58,9 @@ body {
   text-decoration: underline;
 }
 header {
-  background: rgb(10, 10, 10, 0.5);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgb(10, 10, 10, 0.5);
   color: white;
 }
 main {

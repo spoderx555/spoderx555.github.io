@@ -44,6 +44,9 @@ export default defineConfig({
   integrations: [expressiveCode(defineEcConfig), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
+    css: {
+      transformer: "postcss",
+    },
   },
   fonts: [
     {
