@@ -85,7 +85,6 @@ const { title, description, pubDate, tableOfContent, heroImage } = Astro.props;
 			}
 
 			let handleScroll: () => void
-			let handleWheel: (e: WheelEvent) => void
 
 			function setup(): void {
 				requestAnimationFrame(() => {
@@ -104,22 +103,13 @@ const { title, description, pubDate, tableOfContent, heroImage } = Astro.props;
 				}
 				}
 				window.addEventListener('scroll', handleScroll, { passive: true })
-
-				handleWheel = (e: WheelEvent) => {
-				e.preventDefault()
-				window.scrollBy({ top: e.deltaY * 0.5, behavior: 'smooth' })
-				}
-				window.addEventListener('wheel', handleWheel, { passive: false })
 			}
 
 			function teardown(): void {
 				window.removeEventListener('scroll', handleScroll)
-				window.removeEventListener('wheel', handleWheel)
 				clearActive()
 			}
-
 			setup()
-
 			document.addEventListener('astro:page-load', () => {
 				teardown()
 				setup()

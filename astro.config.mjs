@@ -18,8 +18,6 @@ export default defineConfig({
   },
   server: {
     headers: {
-      "Content-Security-Policy":
-        "default-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; require-trusted-types-for 'script';",
       "Cross-Origin-Opener-Policy": "same-origin",
     },
   },
