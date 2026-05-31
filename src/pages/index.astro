@@ -12,12 +12,17 @@ import { SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body class="flex flex-col">
 		<Header />
-		<main class="!my-0 flex-1 h-full text-center">
-			<h1>Spoderx555</h1>
-			<p>
+		<main class="!my-0 flex-1 h-full flex items-center">
+			<div>
+				<h1 class="font-bold">Spoderx555</h1>
+			<p class="text-muted">
 				Just a security researcher who enjoys breaking things and writing about it. This is where I share my bug bounty findings and whatever I'm learning along the way.
 			</p>
-			<p>my <a class="underline" href="https://x.com/spoderx555">Twitter / X</a></p>
+			<div class="mt-4">
+				<a href="/blog" class="text-sm text-muted transition hover:text-white hover:border-b-border py-0.5 border-b border-b-border2 mr-2">Read the blog</a>
+				<a href="https://twitter.com/spoderx555" class="text-sm text-muted transition hover:text-white hover:border-b-border py-0.5 border-b border-b-border2">Twitter / X</a>
+				</div>
+			</div>
 		</main>
 		<Footer />
 	</body>

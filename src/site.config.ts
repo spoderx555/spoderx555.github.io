@@ -8,12 +8,13 @@ export default defineEcConfig({
   },
   themes: ["one-dark-pro"],
   styleOverrides: {
+    borderRadius: "0px",
     codeBackground: "#161616",
-    borderColor: "#363635",
+    borderColor: "#2a2a2a",
     borderWidth: "1px",
     focusBorder: "transparent",
     frames: {
-      editorTabBarBackground: "#121212",
+      editorTabBarBackground: "#181818",
       editorTabBarBorderBottomColor: "transparent",
       terminalTitlebarBorderBottomColor: "transparent",
       editorActiveTabForeground: "#83817d",

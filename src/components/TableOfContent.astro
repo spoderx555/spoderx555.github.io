@@ -6,15 +6,15 @@ import XIcon from "../assets/x-logo.svg"
 const {content} = Astro.props
 ---
 
-<aside class="hidden xl:block content-table sticky top-18 left-0 ml-6 min-w-[250px] max-h-min">
+<aside class="hidden xl:block content-table sticky top-24 left-0 ml-6 min-w-[250px] max-h-min">
     <span class="mb-4 block">Table of Contents</span>
     <ul class="text-xs text-muted mb-8">
         <ContentList content={content} nested={1} />
     </ul>
     <hr />
     <div class="flex flex-col items-start mt-4">
-        <button id="copy-link" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start rounded-sm mb-2 flex items-center group"><ChainIcon class="fill-muted group-hover:fill-white transition w-4 h-4 mr-2" /><span>Copy Link</span></button>
-        <a href="https://x.com/spoderx555" target="_blank" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start rounded-sm flex items-center group"><XIcon class="fill-muted group-hover:fill-white transition w-4 h-4 mr-2" /><span>Twitter / X</span></a>
+        <button id="copy-link" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start mb-2 flex items-center group"><ChainIcon class="fill-muted group-hover:fill-white transition w-4 h-4 mr-2" /><span>Copy Link</span></button>
+        <a href="https://x.com/spoderx555" target="_blank" class="transition hover:text-white hover:border-muted  border cursor-pointer border-border px-4 py-2 text-xs text-muted w-full text-start  flex items-center group"><XIcon class="fill-muted group-hover:fill-white transition w-4 h-4 mr-2" /><span>Twitter / X</span></a>
     </div>
     <script>
             const btn = document.getElementById('copy-link') as HTMLButtonElement | null

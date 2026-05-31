@@ -20,16 +20,17 @@ const posts = (await getCollection('blog')).sort(
 	<body class="flex flex-col">
 		<Header />
 		<main class="!my-0 flex-1 h-full">
-			<section>
-				<ul>
+			<section class="mt-12">
+				<p class="text-sm text-muted">ALL POSTS</p>
+				<ul class="mt-8 border-t border-b border-border2">
 					{
 						posts.map((post) => (
-							<div class="hover:bg-background-hover px-4 py-2">
-								<a href={`/blog/${post.id}/`}>
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
+							<div class="text-sm ">
+								<a href={`/blog/${post.id}/`} class="flex items-center justify-between px-2 py-4 group">
+									<span class="font-bold text-text transition opacity-75 group-hover:opacity-100">{post.data.title}</span>
+									<span class="text-xs">
 										<FormattedDate date={post.data.pubDate} />
-									</p>
+									</span>
 								</a>
 							</div>
 						))

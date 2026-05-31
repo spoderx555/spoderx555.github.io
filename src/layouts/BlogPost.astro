@@ -20,7 +20,7 @@ const { title, description, pubDate, tableOfContent, heroImage } = Astro.props;
 	<body>
 		<Header />
 			<main>
-				<article>
+				<article class="my-12">
 				<div>
 					<div>
 						<p class="text-muted">/ <a class="hover:underline hover:text-white transition" href="/blog">blog</a> /</p>
@@ -29,7 +29,7 @@ const { title, description, pubDate, tableOfContent, heroImage } = Astro.props;
 					</div>
 					<hr class="my-6" />
 					<div class="hero-image mb-8">
-						{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+						{heroImage && <Image width={1020} height={510} loading='lazy' src={heroImage} alt="" />}
 					</div>
 				</div>
 				<div class="flex max-w-fit gap-2">

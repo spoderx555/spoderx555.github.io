@@ -4,6 +4,7 @@
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import { SITE_TITLE } from '../consts';
+import { Font } from "astro:assets";
 
 interface Props {
 	title: string;
@@ -24,6 +25,7 @@ const fullTitle = `${title} | ${SITE_TITLE}`
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<Font cssVariable="--jetbrains-mono" />
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -31,30 +33,23 @@ const fullTitle = `${title} | ${SITE_TITLE}`
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
-
-<!-- SEO -->
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
-
-<!-- Open Graph / Facebook -->
+<link rel="alternate" type="application/rss+xml" title="Spoderx555" href="/rss.xml" />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 {image && <meta property="og:image" content={new URL(image.src, Astro.url)} />}
 <meta property="og:url" content={Astro.url} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={SITE_TITLE} />
-
-<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:url" content={Astro.url} />
 {image && <meta property="twitter:image" content={new URL(image.src, Astro.url)} />}
-
-<!-- Structured Data -->
 {type === "article" && (
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",

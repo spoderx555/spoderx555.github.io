@@ -5,15 +5,16 @@
   --color-background-hover: #ffffff08;
   --color-background-second: #1b1b1b;
   --color-heading: #f5f2ec;
-  --color-text: #e8e4dc;
-  --color-muted: #83817d;
+  --color-text: #d4d4d4;
+  --color-muted: #555;
   --color-border: #363635;
+  --color-border2: #2a2a2a;
 }
 
 :root {
-  --font-heading: "Share Tech Mono", monospace;
-  --font-body: "Share Tech Mono", monospace;
-  --font-code: "Share Tech Mono", monospace;
+  --font-heading: var(--jetbrains-mono), monospace;
+  --font-body: var(--jetbrains-mono), monospace;
+  --font-code: var(--jetbrains-mono), monospace;
 }
 
 pre::-webkit-scrollbar {
@@ -99,6 +100,8 @@ h6 {
 }
 .title {
   font-family: var(--font-code) !important;
+  font-size: small !important;
+  color: var(--color-text) !important;
 }
 code,
 pre {
@@ -161,18 +164,18 @@ table {
 .prose img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 code {
+  font-family: var(--font-code) !important;
+  font-size: small;
   padding: 3px 7px;
   background-color: var(--color-background-second);
-  border-radius: 5px;
+  border: 1px solid var(--color-border2);
 }
 pre {
   padding: 1.5em;
-  border-radius: 8px;
 }
 pre > code {
   all: unset;

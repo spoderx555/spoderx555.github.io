@@ -48,26 +48,12 @@ export default defineConfig({
   },
   fonts: [
     {
-      provider: fontProviders.local(),
-      name: "Share Tech mono",
-      cssVariable: "--font-tech-mono",
+      name: "JetBrains Mono",
+      cssVariable: "--jetbrains-mono",
+      provider: fontProviders.fontsource(),
       fallbacks: ["monospace"],
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/share-tech-mono-latin-400-normal.woff"],
-            weight: 400,
-            style: "normal",
-            display: "swap",
-          },
-          {
-            src: ["./src/assets/fonts/share-tech-mono-latin-400-normal.woff2"],
-            weight: 700,
-            style: "normal",
-            display: "swap",
-          },
-        ],
-      },
+      weights: [400, 500, 700],
+      styles: ["normal", "italic"],
     },
   ],
 });

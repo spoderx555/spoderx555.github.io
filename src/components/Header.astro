@@ -3,9 +3,9 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header class="sticky top-0 z-99">
-	<nav class="flex justify-between items-center px-6 py-2">
-		<h6><a href="/">{SITE_TITLE}</a></h6>
+<header class="sticky top-0 z-99 border-b border-b-border2">
+	<nav class="flex justify-between items-center px-8 py-2">
+		<h6 class="font-bold"><a href="/">{SITE_TITLE}</a></h6>
 		<div class="internal-links text-muted">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
