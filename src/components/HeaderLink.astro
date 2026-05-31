@@ -9,4 +9,4 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<a href={href} class={`${isActive ? "text-white" : "text-muted"} mr-4 hover:underline hover:text-white transition`} {...props}><slot /></a>
+<a href={href} class={`${isActive ? "text-white" : "text-muted"} [&:not(:last-child)]:mr-4 hover:underline hover:text-white transition`} {...props}><slot /></a>

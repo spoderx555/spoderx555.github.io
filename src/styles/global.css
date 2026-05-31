@@ -78,6 +78,9 @@ main {
   font-weight: 700;
   text-decoration: underline;
 }
+.prose {
+  line-height: 1.95;
+}
 .prose ol li {
   list-style-position: inside;
   list-style-type: decimal;
