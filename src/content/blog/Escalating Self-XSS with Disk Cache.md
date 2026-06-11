@@ -25,8 +25,6 @@ This technique could also be applied from a subdomain XSS by using the `Domain=`
 
 I then noticed the session cookie was being reflected on the page. My immediate thought was to open the victim’s page and trigger the Self-XSS on a separate tab to steal the session. However, I quickly ran into a wall: the Self-XSS page was using [Cross-Origin-Opener-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Opener-Policy) `COOP: same-origin` the strictest option.
 This setting ensures that the page shares a **Browser Context Group (BCG)** only with pages that are `same-origin` and have the same `COOP: same-origin` directive.
-<br><br>
-If it was `COOP: same-origin-allow-popups` or anything else, this approach would have worked, as it only requires both pages to be `same-origin` to share the **BCG**. And the sensitive page wasn’t setting the header at all.
 
 ## The Winning Path
 
